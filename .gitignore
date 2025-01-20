@@ -41,8 +41,12 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Environment variables
+# Environment files
+/src/environments/environment.ts
+/src/environments/environment.*.ts
 .env
-.env.local
-.env.development
-.env.production
+.env.*
+
+# Firebase
+.firebase/
+*.log

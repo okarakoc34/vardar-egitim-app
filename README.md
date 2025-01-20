@@ -1,6 +1,62 @@
-# VardarEgitimApp
+# Vardar Eğitim Uygulaması
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+## Kurulum
+
+1. Projeyi klonlayın
+
+```bash
+git clone https://github.com/your-username/vardar-egitim-app.git
+cd vardar-egitim-app
+```
+
+2. Bağımlılıkları yükleyin
+
+```bash
+npm install
+```
+
+3. Environment dosyasını oluşturun
+
+- `src/environments/environment.example.ts` dosyasını `src/environments/environment.ts` olarak kopyalayın
+- Supabase bilgilerinizi ekleyin:
+  ```typescript
+  export const environment = {
+    production: false,
+    supabaseUrl: "YOUR_SUPABASE_URL",
+    supabaseKey: "YOUR_SUPABASE_KEY",
+  };
+  ```
+
+4. Uygulamayı başlatın
+
+```bash
+ng serve
+```
+
+## Deployment
+
+1. Production environment dosyasını oluşturun
+
+- `src/environments/environment.example.ts` dosyasını `src/environments/environment.production.ts` olarak kopyalayın
+- Production Supabase bilgilerinizi ekleyin
+
+2. Build alın
+
+```bash
+ng build --configuration production
+```
+
+3. Firebase'e deploy edin
+
+```bash
+firebase deploy
+```
+
+## Güvenlik Notları
+
+- Environment dosyaları (`.env`, `environment.ts`, `environment.production.ts`) asla GitHub'a push edilmemelidir
+- Bu dosyalar hassas bilgiler içerdiği için `.gitignore` dosyasına eklenmiştir
+- Yeni bir geliştirici projeyi kurduğunda kendi environment dosyalarını oluşturmalıdır
 
 ## Development server
 
