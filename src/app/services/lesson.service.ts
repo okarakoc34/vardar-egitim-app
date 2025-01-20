@@ -45,32 +45,41 @@ export class LessonService {
       } = await this.supabase.client.auth.getUser();
       if (!user) throw new Error('Kullanıcı bulunamadı');
 
+      // Tüm dersleri çek
       const { data, error } = await this.supabase.client
         .from('lessons')
-        .select('status')
+        .select('*')
         .eq('teacher_id', user.id);
 
       if (error) throw error;
 
+      // Durumları kontrol et ve say
       const stats = {
         completed: 0,
         planned: 0,
         cancelled: 0,
       };
 
+      console.log('Tüm dersler:', data); // Debug için
+
       data?.forEach((lesson) => {
-        switch (lesson.status.toLowerCase()) {
-          case 'tamamlandı':
-            stats.completed++;
-            break;
-          case 'planlandı':
-            stats.planned++;
-            break;
-          case 'iptal':
-            stats.cancelled++;
-            break;
+        // Durumu küçük harfe çevirip kontrol edelim
+        const status = lesson.status.toLowerCase();
+
+        if (status === 'tamamlandı') {
+          stats.completed++;
+        } else if (status === 'planlandı') {
+          stats.planned++;
+        } else if (
+          status === 'iptal' ||
+          status === 'iptal edildi' ||
+          status === 'İptal Edildi'.toLowerCase()
+        ) {
+          stats.cancelled++;
         }
       });
+
+      console.log('İstatistikler:', stats); // Son durumu kontrol et
 
       return stats;
     } catch (error) {

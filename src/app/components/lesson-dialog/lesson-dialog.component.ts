@@ -105,23 +105,14 @@ import { MatIconModule } from '@angular/material/icon';
             <mat-icon matPrefix>book</mat-icon>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" *ngIf="data.isEdit">
             <mat-label>Durum</mat-label>
             <mat-select formControlName="status" required>
-              <mat-option
-                *ngFor="let option of statusOptions"
-                [value]="option.value"
-              >
-                <div style="display: flex; align-items: center;">
-                  <span
-                    class="status-dot"
-                    [style.background-color]="option.color"
-                  ></span>
-                  {{ option.value }}
-                </div>
-              </mat-option>
+              <mat-option value="Planlandı">Planlandı</mat-option>
+              <mat-option value="Tamamlandı">Tamamlandı</mat-option>
+              <mat-option value="İptal Edildi">İptal Edildi</mat-option>
             </mat-select>
-            <mat-icon matPrefix>flag</mat-icon>
+            <mat-icon matPrefix>info</mat-icon>
           </mat-form-field>
         </form>
       </div>
