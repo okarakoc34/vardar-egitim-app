@@ -24,4 +24,6 @@ export const routes: Routes = [
       ),
     canActivate: [authGuard],
   },
+  // 404 sayfası için wildcard route
+  { path: '**', redirectTo: '/dashboard' },
 ];
