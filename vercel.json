@@ -1,26 +1,8 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "dist/vardar-egitim-app/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/dist/vardar-egitim-app/assets/$1"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/dist/vardar-egitim-app/favicon.ico"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/dist/vardar-egitim-app/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
