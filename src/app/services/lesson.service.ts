@@ -14,9 +14,15 @@ export class LessonService {
 
   async getPlannedLessons(): Promise<Lesson[]> {
     try {
+      const {
+        data: { user },
+      } = await this.supabase.client.auth.getUser();
+      if (!user) throw new Error('Kullanıcı bulunamadı');
+
       const { data, error } = await this.supabase.client
         .from('lessons')
         .select('*')
+        .eq('teacher_id', user.id)
         .order('date', { ascending: false })
         .order('time', { ascending: false });
 
@@ -34,9 +40,15 @@ export class LessonService {
     cancelled: number;
   }> {
     try {
+      const {
+        data: { user },
+      } = await this.supabase.client.auth.getUser();
+      if (!user) throw new Error('Kullanıcı bulunamadı');
+
       const { data, error } = await this.supabase.client
         .from('lessons')
-        .select('status');
+        .select('status')
+        .eq('teacher_id', user.id);
 
       if (error) throw error;
 
@@ -69,9 +81,20 @@ export class LessonService {
 
   async createLesson(lesson: Partial<Lesson>): Promise<void> {
     try {
+      const {
+        data: { user },
+      } = await this.supabase.client.auth.getUser();
+      if (!user) throw new Error('Kullanıcı bulunamadı');
+
+      const lessonWithTeacher = {
+        ...lesson,
+        teacher_id: user.id,
+        status: 'Planlandı',
+      };
+
       const { error } = await this.supabase.client
         .from('lessons')
-        .insert([lesson]);
+        .insert([lessonWithTeacher]);
 
       if (error) throw error;
     } catch (error) {
@@ -82,10 +105,16 @@ export class LessonService {
 
   async updateLesson(id: string, lesson: Partial<Lesson>): Promise<void> {
     try {
+      const {
+        data: { user },
+      } = await this.supabase.client.auth.getUser();
+      if (!user) throw new Error('Kullanıcı bulunamadı');
+
       const { error } = await this.supabase.client
         .from('lessons')
         .update(lesson)
-        .eq('id', id);
+        .eq('id', id)
+        .eq('teacher_id', user.id);
 
       if (error) throw error;
     } catch (error) {
@@ -96,10 +125,16 @@ export class LessonService {
 
   async deleteLesson(id: string): Promise<void> {
     try {
+      const {
+        data: { user },
+      } = await this.supabase.client.auth.getUser();
+      if (!user) throw new Error('Kullanıcı bulunamadı');
+
       const { error } = await this.supabase.client
         .from('lessons')
         .delete()
-        .eq('id', id);
+        .eq('id', id)
+        .eq('teacher_id', user.id);
 
       if (error) throw error;
     } catch (error) {

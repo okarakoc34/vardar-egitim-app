@@ -279,7 +279,7 @@ export class LessonDialogComponent implements OnInit {
       student_id: ['', Validators.required],
       date: [null, Validators.required],
       time: ['', Validators.required],
-      subject: ['', Validators.required],
+      subject: ['Matematik', Validators.required],
       topic: [''],
       status: ['Planlandı', Validators.required],
     });
