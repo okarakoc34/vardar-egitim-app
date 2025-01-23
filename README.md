@@ -1,115 +1,99 @@
-# Vardar Eğitim Uygulaması
+# Vardar Eğitim Yönetim Sistemi
+
+Öğretmenler için özel ders planlama ve takip sistemi. Angular ve Supabase kullanılarak geliştirilmiş modern bir web uygulaması.
+
+## Özellikler
+
+- 📚 Ders Planlama ve Takibi
+
+  - Yeni ders planlaması
+  - Ders durumu güncelleme (Planlandı, Tamamlandı, İptal Edildi)
+  - Ders detayları görüntüleme ve düzenleme
+
+- 👥 Öğrenci Yönetimi
+
+  - Öğrenci ekleme ve düzenleme
+  - Öğrenci bilgilerini görüntüleme
+  - Veli iletişim bilgileri takibi
+
+- 📊 Dashboard
+
+  - Ders istatistikleri
+  - Planlanan derslerin durumu
+  - Filtreleme ve arama özellikleri
+
+- 🔔 Bildirim Sistemi
+  - Planlanan dersler için otomatik hatırlatmalar
+  - Ders başlangıcından 30 dakika önce bildirim
+
+## Teknolojiler
+
+- Angular 17
+- Angular Material UI
+- Supabase (Backend ve Veritabanı)
+- Firebase Cloud Messaging (Bildirimler için)
+- TypeScript
+- SCSS
 
 ## Kurulum
 
-1. Projeyi klonlayın
+1. Repoyu klonlayın:
 
 ```bash
-git clone https://github.com/your-username/vardar-egitim-app.git
+git clone https://github.com/kullaniciadi/vardar-egitim-app.git
 cd vardar-egitim-app
 ```
 
-2. Bağımlılıkları yükleyin
+2. Bağımlılıkları yükleyin:
 
 ```bash
 npm install
 ```
 
-3. Environment dosyasını oluşturun
+3. Environment dosyasını düzenleyin:
 
-- `src/environments/environment.example.ts` dosyasını `src/environments/environment.ts` olarak kopyalayın
-- Supabase bilgilerinizi ekleyin:
-  ```typescript
-  export const environment = {
-    production: false,
-    supabaseUrl: "YOUR_SUPABASE_URL",
-    supabaseKey: "YOUR_SUPABASE_KEY",
-  };
-  ```
+- `src/environments/environment.ts` dosyasını kendi Supabase ve Firebase bilgilerinizle güncelleyin.
 
-4. Uygulamayı başlatın
+4. Uygulamayı başlatın:
 
 ```bash
 ng serve
 ```
 
-## Deployment
+5. Tarayıcınızda açın:
 
-1. Production environment dosyasını oluşturun
-
-- `src/environments/environment.example.ts` dosyasını `src/environments/environment.production.ts` olarak kopyalayın
-- Production Supabase bilgilerinizi ekleyin
-
-2. Build alın
-
-```bash
-ng build --configuration production
+```
+http://localhost:4200
 ```
 
-3. Firebase'e deploy edin
+## Kullanım
 
-```bash
-firebase deploy
-```
+1. Giriş yapın veya yeni hesap oluşturun
+2. Dashboard üzerinden dersleri görüntüleyin
+3. "Yeni Ders Planla" butonu ile ders ekleyin
+4. Öğrenciler sekmesinden öğrenci yönetimini yapın
+5. Bildirimleri aktif edin ve ders hatırlatmalarını alın
 
-## Güvenlik Notları
+## Katkıda Bulunma
 
-- Environment dosyaları (`.env`, `environment.ts`, `environment.production.ts`) asla GitHub'a push edilmemelidir
-- Bu dosyalar hassas bilgiler içerdiği için `.gitignore` dosyasına eklenmiştir
-- Yeni bir geliştirici projeyi kurduğunda kendi environment dosyalarını oluşturmalıdır
+1. Bu repoyu fork edin
+2. Yeni bir branch oluşturun (`git checkout -b feature/yeniOzellik`)
+3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik: Açıklama'`)
+4. Branch'inizi push edin (`git push origin feature/yeniOzellik`)
+5. Pull Request oluşturun
 
-## Development server
+## Lisans
 
-To start a local development server, run:
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
-```bash
-ng serve
-```
+## İletişim
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Proje Sahibi: [Ad Soyad]
+- E-posta: [E-posta adresi]
+- LinkedIn: [LinkedIn profil linki]
 
-## Code scaffolding
+## Ekran Görüntüleri
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![Dashboard](screenshots/dashboard.png)
+![Ders Planlama](screenshots/lesson-planning.png)
+![Öğrenci Yönetimi](screenshots/student-management.png)

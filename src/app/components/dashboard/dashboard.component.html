@@ -23,23 +23,35 @@
         </mat-card>
       </div>
 
-      <!-- Dersler Başlık ve Arama -->
+      <!-- Header -->
       <div class="header-container">
-        <div class="header-left">
-          <h2>Planlanan Dersler</h2>
-          <div class="search-container">
-            <mat-form-field appearance="outline">
-              <mat-label>Ders Ara</mat-label>
-              <input
-                matInput
-                [(ngModel)]="searchText"
-                (keyup)="filterLessons()"
-                placeholder="Öğrenci adı, ders veya konu..."
-              />
-              <mat-icon matPrefix>search</mat-icon>
-            </mat-form-field>
-          </div>
-        </div>
+        <!-- Desktop görünüm için button toggle -->
+        <mat-button-toggle-group
+          [(ngModel)]="selectedStatus"
+          (change)="filterLessons()"
+          class="desktop-filter"
+        >
+          <mat-button-toggle value="all">Tümü</mat-button-toggle>
+          <mat-button-toggle value="Tamamlandı">Tamamlanan</mat-button-toggle>
+          <mat-button-toggle value="Planlandı">Planlanan</mat-button-toggle>
+          <mat-button-toggle value="İptal Edildi"
+            >İptal Edilen</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+
+        <!-- Mobil görünüm için select -->
+        <mat-form-field appearance="outline" class="mobile-filter">
+          <mat-select
+            [(ngModel)]="selectedStatus"
+            (selectionChange)="filterLessons()"
+          >
+            <mat-option value="all">Tümü</mat-option>
+            <mat-option value="Tamamlandı">Tamamlanan</mat-option>
+            <mat-option value="Planlandı">Planlanan</mat-option>
+            <mat-option value="İptal Edildi">İptal Edilen</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <button
           mat-raised-button
           color="primary"
@@ -49,21 +61,6 @@
           <mat-icon>add</mat-icon>
           Yeni Ders Planla
         </button>
-      </div>
-
-      <!-- Filtreleme -->
-      <div class="filter-container">
-        <mat-button-toggle-group
-          [(ngModel)]="selectedStatus"
-          (change)="filterLessons()"
-        >
-          <mat-button-toggle value="all">Tümü</mat-button-toggle>
-          <mat-button-toggle value="Tamamlandı">Tamamlanan</mat-button-toggle>
-          <mat-button-toggle value="Planlandı">Planlanan</mat-button-toggle>
-          <mat-button-toggle value="İptal Edildi"
-            >İptal Edilen</mat-button-toggle
-          >
-        </mat-button-toggle-group>
       </div>
 
       <!-- Ders Kartları -->

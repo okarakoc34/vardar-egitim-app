@@ -60,8 +60,6 @@ export class LessonService {
         cancelled: 0,
       };
 
-      console.log('Tüm dersler:', data); // Debug için
-
       data?.forEach((lesson) => {
         // Durumu küçük harfe çevirip kontrol edelim
         const status = lesson.status.toLowerCase();
@@ -78,8 +76,6 @@ export class LessonService {
           stats.cancelled++;
         }
       });
-
-      console.log('İstatistikler:', stats); // Son durumu kontrol et
 
       return stats;
     } catch (error) {

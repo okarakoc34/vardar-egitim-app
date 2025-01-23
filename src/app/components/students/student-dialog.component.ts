@@ -184,7 +184,6 @@ export class StudentDialogComponent {
     });
 
     if (data.isEdit && data.student) {
-      console.log('Düzenlenecek öğrenci:', data.student);
       this.studentForm.patchValue({
         first_name: data.student.first_name,
         last_name: data.student.last_name,
